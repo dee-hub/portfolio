@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oluwadolapo Isaac Salako</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="bg-black text-white" style="font-family: 'Poppins', sans-serif;">
+
+  <!-- Navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- Background Canvas and Data Layer -->
+  <canvas id="networkCanvas"></canvas>
+  <div id="floatingDataContainer"></div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section">
+    <div class="container-fluid content-overlay hero-scroll-area">
+      <div class="row flex-column-reverse flex-md-row align-items-center px-3 px-md-5 gx-4 gy-4">
+
+        <!-- Text Column -->
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-center text-center text-md-start">
+          <h1 class="display-3 fw-bold mb-3">
+            Hi, my name is <span class="text-info">Isaac</span>.
+          </h1>
+          <p class="lead mb-3">
+            I am a <strong>full stack data scientist and AI engineer</strong> with a passion for 
+            building intelligent systems that learn, adapt, and inspire.
+          </p>
+
+          <p class="fst-italic subtitle mb-4">
+            “I build intelligent systems that bridge data, creativity, and real-world impact.”<br>
+            <small>– Full-stack Data Scientist &amp; AI Engineer</small>
+          </p>
+
+          <!-- Quick Stats -->
+          <div class="row text-white mb-4 gx-2 gy-2">
+            <div class="col-6">
+              <h5 class="text-info fw-bold">4+</h5>
+              <p class="mb-0 small">Years Experience</p>
+            </div>
+            <div class="col-6">
+              <h5 class="text-info fw-bold">10+</h5>
+              <p class="mb-0 small">AI Projects</p>
+            </div>
+            <div class="col-6">
+              <h5 class="text-info fw-bold">5</h5>
+              <p class="mb-0 small">Published Blogs</p>
+            </div>
+            <div class="col-6">
+              <h5 class="text-info fw-bold">3</h5>
+              <p class="mb-0 small">Industries Served</p>
+            </div>
+          </div>
+
+          <!-- Resume & Socials -->
+          <div>
+            <a href="{{ url_for('static', filename='isaac-salako-CV-.pdf') }}"
+               class="btn btn-outline-info btn-sm me-2" target="_blank">Download Resume</a>
+            <a href="https://linkedin.com/in/oluwadolapo-salako"
+               class="btn btn-outline-light btn-sm me-2" target="_blank">LinkedIn</a>
+            <a href="https://github.com/your-github-username"
+               class="btn btn-outline-light btn-sm" target="_blank">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Avatar Column -->
+        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <img 
+            src="{{ url_for('static', filename='images/avatar.png') }}"
+            alt="Oluwadolapo Isaac Salako"
+            class="rounded-circle shadow avatar-img mx-auto mx-md-0"
+          >
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll Down Arrow -->
+    <div class="text-center scroll-down-arrow">
+      <a href="#blogs">
+        <svg width="40" height="40" fill="#00bfff" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 12a.5.5 0 0 1-.374-.155l-6-6a.5.5 0 1 1 .748-.664L8 10.792l5.626-5.611a.5.5 0 1 1 .748.664l-6 6A.5.5 0 0 1 8 12z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="backToTopBtn" class="btn btn-info btn-lg shadow"
+     style="position: fixed; bottom: 40px; right: 40px; display: none; border-radius: 50%; z-index: 100;">
+    ↑
+  </a>
+
+  <!-- JS Scripts -->
+  <script src="{{ url_for('static', filename='js/network.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Back to Top
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // Scroll to blogs section
+    document.querySelector('.scroll-down-arrow a').addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector('#blogs').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

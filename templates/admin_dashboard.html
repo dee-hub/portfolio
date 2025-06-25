@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Oluwadolapo</title>
+
+  <!-- Bootstrap and Poppins Font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    .card {
+      background-color: #121212;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand">Admin Dashboard</span>
+    <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+  </div>
+</nav>
+
+<div class="container py-5">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <h2 class="text-center mb-5">Manage Your Content</h2>
+
+  <!-- Blogs Section -->
+  <div class="card p-4">
+    <h4>Add Blog</h4>
+    <form method="POST" action="{{ url_for('add_blog') }}">
+      <div class="mb-3">
+        <input type="text" class="form-control" name="blogTitle" placeholder="Blog Title" required>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" name="blogTagline" placeholder="Short Tagline" required>
+      </div>
+      <div class="mb-3">
+        <input type="url" class="form-control" name="blogImage" placeholder="Image URL" required>
+      </div>
+      <div class="mb-3">
+        <input type="url" class="form-control" name="blogLink" placeholder="Blog Link" required>
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-info">Add Blog</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Links Section -->
+  <div class="card p-4">
+    <h4>Add Link</h4>
+    <form method="POST" action="{{ url_for('add_link') }}">
+      <div class="mb-3">
+        <input type="text" class="form-control" name="linkTitle" placeholder="Link Title" required>
+      </div>
+      <div class="mb-3">
+        <input type="url" class="form-control" name="linkUrl" placeholder="Link URL" required>
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" name="linkDescription" placeholder="Link Description" rows="2" required></textarea>
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-info">Add Link</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Videos Section -->
+  <div class="card p-4">
+    <h4>Add YouTube Video</h4>
+    <form method="POST" action="{{ url_for('add_video') }}">
+      <div class="mb-3">
+        <input type="text" class="form-control" name="videoTitle" placeholder="Video Title" required>
+      </div>
+      <div class="mb-3">
+        <input type="url" class="form-control" name="videoUrl" placeholder="YouTube Video URL" required>
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-info">Add Video</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
