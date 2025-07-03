@@ -34,7 +34,6 @@ def index():
             "date": format_firestore_date(data.get("createdAt"))
         }
         latest_data_stories.append(story)
-
     return render_template('index.html', latest_data_stories=latest_data_stories)
 
 @app.route('/blogs')
@@ -144,3 +143,6 @@ def add_video():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+#if __name__ == '__main__':
+ #   app.run(debug=True)
