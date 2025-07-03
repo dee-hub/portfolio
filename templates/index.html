@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Oluwadolapo Isaac Salako</title>
 
   <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 
 <body class="bg-black text-white" style="font-family: 'Poppins', sans-serif;">
@@ -38,12 +38,7 @@
             I am a <strong>full stack data scientist and AI engineer</strong> with a passion for 
             building intelligent systems that learn, adapt, and inspire.
           </p>
-
-          <p class="fst-italic subtitle mb-4">
-            “I build intelligent systems that bridge data, creativity, and real-world impact.”<br>
-            <small>– Full-stack Data Scientist &amp; AI Engineer</small>
-          </p>
-
+          <br>
           <!-- Quick Stats -->
           <div class="row text-white mb-4 gx-2 gy-2">
             <div class="col-6">
@@ -56,7 +51,7 @@
             </div>
             <div class="col-6">
               <h5 class="text-info fw-bold">5</h5>
-              <p class="mb-0 small">Published Blogs</p>
+              <p class="mb-0 small">Data Stories</p>
             </div>
             <div class="col-6">
               <h5 class="text-info fw-bold">3</h5>
@@ -70,7 +65,7 @@
                class="btn btn-outline-info btn-sm me-2" target="_blank">Download Resume</a>
             <a href="https://linkedin.com/in/oluwadolapo-salako"
                class="btn btn-outline-light btn-sm me-2" target="_blank">LinkedIn</a>
-            <a href="https://github.com/your-github-username"
+            <a href="https://github.com/dee-hub"
                class="btn btn-outline-light btn-sm" target="_blank">GitHub</a>
           </div>
         </div>
@@ -83,17 +78,74 @@
             class="rounded-circle shadow avatar-img mx-auto mx-md-0"
           >
         </div>
-
       </div>
     </div>
+  </section>
 
-    <!-- Scroll Down Arrow -->
-    <div class="text-center scroll-down-arrow">
-      <a href="#blogs">
-        <svg width="40" height="40" fill="#00bfff" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 12a.5.5 0 0 1-.374-.155l-6-6a.5.5 0 1 1 .748-.664L8 10.792l5.626-5.611a.5.5 0 1 1 .748.664l-6 6A.5.5 0 0 1 8 12z"/>
-        </svg>
-      </a>
+  <!-- Divider Block (Spacer) -->
+  <div class="section-divider"></div>
+
+  <!-- Data Stories Section (Inspired by WrapKit) -->
+  <section id="data-stories" class="blog-home3 py-5 content-overlay">
+    <div class="container">
+      <!-- Section Title -->
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h3 class="my-3">Latest Data Stories</h3>
+          <h6 class="subtitle font-weight-normal">
+            Technical explorations of real-world problems and how I solve them with data science and AI.
+          </h6>
+        </div>
+      </div>
+
+      <!-- Main Story + 4 Small Stories -->
+      <div class="row mt-4">
+        <!-- Featured Story -->
+        <div class="col-lg-6">
+          {% if latest_data_stories %}
+          <div class="card border-0 mb-4">
+            <a href="{{ latest_data_stories[0].link }}">
+              <img class="card-img-top" src="{{ latest_data_stories[0].image }}" alt="{{ latest_data_stories[0].title }}">
+            </a>
+            <div class="date-pos text-center text-white p-3 bg-success-gradiant">
+              {{ latest_data_stories[0].author }} &nbsp;&nbsp; {{ latest_data_stories[0].date }}
+            </div>
+            <h5 class="font-weight-medium mt-3">
+              <a href="{{ latest_data_stories[0].link }}" class="link text-decoration-none">
+                {{ latest_data_stories[0].title }}
+              </a>
+            </h5>
+            <h6 class="subtitle font-weight-normal">{{ latest_data_stories[0].tagline }}</h6>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Smaller Cards -->
+        <div class="col-lg-6">
+          <div class="row g-4">
+            {% for story in latest_data_stories[1:] %}
+            <div class="col-md-6 d-flex">
+              <div class="card data-story-mini border-0 w-100 h-100 d-flex flex-column">
+                <a href="{{ story.link }}">
+                  <img class="card-img-top" src="{{ story.image }}" alt="{{ story.title }}">
+                </a>
+                <div class="date-pos text-white p-3 bg-success-gradiant d-flex justify-content-between">
+                  <span>{{ story.author }}</span>
+                  <span>{{ story.date }}</span>
+                </div>
+                <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+                  <h6 class="font-weight-medium mb-0">
+                    <a href="{{ story.link }}" class="link text-decoration-none">
+                      {{ story.title }}
+                    </a>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -107,7 +159,6 @@
   <script src="{{ url_for('static', filename='js/network.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Back to Top
     document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('backToTopBtn');
       window.addEventListener('scroll', () => {
@@ -117,12 +168,6 @@
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
-    });
-
-    // Scroll to blogs section
-    document.querySelector('.scroll-down-arrow a').addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector('#blogs').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
 </body>
