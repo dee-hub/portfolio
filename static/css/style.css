@@ -19,6 +19,14 @@ html, body {
   display: block;
 }
 
+/* Social Icons Hover */
+a.text-white:hover i {
+  color: #00bfff;
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+
+
 #floatingDataContainer {
   position: fixed;
   top: 0;
