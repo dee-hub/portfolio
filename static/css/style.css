@@ -59,7 +59,7 @@ html, body {
 .section-divider {
   width: 100%;
   height: 100px;
-  margin-top: -55px;
+  margin-top: -40px;
   background: linear-gradient(to bottom, #033546, #0a0a0a, #000);
 }
 
