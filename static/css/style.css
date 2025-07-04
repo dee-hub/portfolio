@@ -270,6 +270,9 @@ a.text-white:hover i {
   .avatar-img {
     max-width: 180px;
   }
+  .section-divider {
+    margin-top: -25px;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
