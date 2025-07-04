@@ -63,7 +63,7 @@ function animate() {
 
       if (distance < 100) {
         ctx.beginPath();
-        ctx.strokeStyle = 'rgba(33, 65, 75, 0.2)';
+        ctx.strokeStyle = 'rgba(29, 100, 120, 0.2)';
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
         ctx.stroke();
