@@ -32,7 +32,7 @@ class Node {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius + (this.glowTimer > 0 ? 3 : 0), 0, Math.PI * 2);
-      ctx.fillStyle = this.glowTimer > 0 ? '#00ffff' : '#00bfff';
+      ctx.fillStyle = this.glowTimer > 0 ? '#00ffff' : '#0e5d77';
       ctx.shadowColor = this.glowTimer > 0 ? '#00ffff' : 'transparent';
       ctx.shadowBlur = this.glowTimer > 0 ? 20 : 0;
       ctx.fill();
@@ -63,7 +63,7 @@ function animate() {
 
       if (distance < 100) {
         ctx.beginPath();
-        ctx.strokeStyle = 'rgba(0, 191, 255, 0.2)';
+        ctx.strokeStyle = 'rgba(33, 65, 75, 0.2)';
         ctx.moveTo(nodes[i].x, nodes[i].y);
         ctx.lineTo(nodes[j].x, nodes[j].y);
         ctx.stroke();
